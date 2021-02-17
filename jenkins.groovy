@@ -21,9 +21,14 @@ node {
   }
   
   stage("Deployingintoserver"){
-     echo 'trying to copy the files into the server web apps folder ..... '
-     bat 'cp SampleWebApplication-1.0-SNAPSHOT.war C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps'
-	 echo 'copy success '
+	  try{
+		      echo 'trying to copy the files into the server web apps folder ..... '
+    			 bat 'cp SampleWebApplication-1.0-SNAPSHOT.war C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps'
+	 		echo 'copy success '
+	  }catch(Error err){
+		  echo "Error info ${err}"
+	  }
+  
   }
 
 }
