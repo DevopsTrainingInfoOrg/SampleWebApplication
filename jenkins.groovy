@@ -11,6 +11,12 @@ node {
   echo "Starting build process ....."
   bat 'mvn clean install'
   echo "Build process  Ended....."
+	  emailext attachLog: true, body: '''Hi Developer,
+
+Everything looks good moving to next step
+
+with regards
+Test''', compressLog: true, replyTo: 'SGdevelopment@tcs.com', subject: '[MyProject]: Error in the uploading the files ', to: 'naveen2test@gmnail.com'
   }
   
   stage("TestCase"){
@@ -25,8 +31,14 @@ node {
 		      echo 'trying to copy the files into the server web apps folder ..... '
     			 bat 'cp SampleWebApplication-1.0-SNAPSHOT.war C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps'
 	 		echo 'copy success '
-	  }catch(Error err){
-		  echo "Error info ${err}"
+	  }catch( err) {
+	       echo  err.getMessage()
+              echo "Error detected, but we will continue."
+		   emailext attachLog: true, body: '''Hi Developer,
+
+something went wrong 
+error trace $err''', compressLog: true, subject: '[MyProject]: Error in the uploading the files ', to: 'naveen2test@gmnail.com'
+	      
 	  }
   
   }
