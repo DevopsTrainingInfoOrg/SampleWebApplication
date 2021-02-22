@@ -9,7 +9,7 @@ node {
   }
   
   stage("build"){
-  echo "Starting build process  my test.. working.."
+  echo "Starting build  my test.. working.."
   bat 'mvn clean install'
   echo "Build process  Ended....."
 	  emailext attachLog: true, body: '''Hi Developer,
