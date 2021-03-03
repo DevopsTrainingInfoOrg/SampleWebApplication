@@ -2,7 +2,7 @@
 node {
 	
 	stage("clean--"){
-    echo "SCM module trying to fetch the source code ....."
+    echo "cleanup activity"
 	cleanWs()
   }
 
