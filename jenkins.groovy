@@ -1,5 +1,10 @@
 
 node {
+	
+	stage("clean--"){
+    echo "SCM module trying to fetch the source code ....."
+	cleanWs()
+  }
 
   stage("Codefetch"){
     echo "SCM module trying to fetch the source code ....."
