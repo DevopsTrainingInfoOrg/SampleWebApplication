@@ -15,7 +15,13 @@ node {
   
   stage("build"){
   echo "Starting build process ....."
-  bat 'mvn clean install'
+	  if(isUnix()){
+	    sh "mvn clean install"
+	  }
+	  else{
+		   bat 'mvn clean install'
+	  }
+ 
   echo "Build process  Ended....."
 	  emailext attachLog: true, body: '''Hi Developer,
 
