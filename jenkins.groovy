@@ -2,6 +2,7 @@
 node {
 
   stage("Codefetch"){
+	  echo "i am at release"
     echo "SCM module trying to fetch the source code ....."
 	git branch: 'main', credentialsId: '7cc213e6-d81e-43ea-80b3-5c593487846d', url: 'https://github.com/DevopsTrainingInfoOrg/SampleWebApplication.git'
 	echo "SCM done"
