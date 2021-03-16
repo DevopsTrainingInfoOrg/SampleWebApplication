@@ -2,6 +2,7 @@
 node {
 	
 	stage("clean--"){
+		echo "I am in main"
     echo "cleanup activity"
 	cleanWs()
   }
